@@ -17,9 +17,8 @@ module.exports = Object.assign({}, utils, packages, {
         .run('xcodebuild -showsdks')
         .then(sdks => sdks.match(/[\w]+\s[\d|.]+/g))
         .then(utils.uniq)
-        .then(
-          platforms =>
-            platforms.length ? ['iOS SDK', { Platforms: platforms }] : ['iOS SDK', NotFound]
+        .then(platforms =>
+          platforms.length ? ['iOS SDK', { Platforms: platforms }] : ['iOS SDK', NotFound]
         );
     }
     return Promise.resolve(['iOS SDK', NA]);
@@ -185,6 +184,14 @@ module.exports = Object.assign({}, utils, packages, {
       utils.run('docker --version').then(utils.findVersion),
       utils.which('docker'),
     ]).then(v => utils.determineFound('Docker', v[0], v[1]));
+  },
+
+  getDockerComposeInfo: () => {
+    utils.log('trace', 'getDockerComposeInfo');
+    return Promise.all([
+      utils.run('docker-compose --version').then(utils.findVersion),
+      utils.which('docker-compose'),
+    ]).then(v => utils.determineFound('Docker Compose', v[0], v[1]));
   },
 
   getElixirInfo: () => {

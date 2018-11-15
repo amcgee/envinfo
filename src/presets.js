@@ -4,7 +4,7 @@ module.exports = {
     Binaries: ['Node', 'Yarn', 'npm', 'Watchman'],
     Utilities: ['CMake', 'Make', 'GCC', 'Git'],
     Servers: ['Apache', 'Nginx'],
-    Virtualization: ['Docker', 'Parallels', 'VirtualBox', 'VMware Fusion'],
+    Virtualization: ['Docker', 'Docker Compose', 'Parallels', 'VirtualBox', 'VMware Fusion'],
     SDKs: ['iOS SDK', 'Android SDK'],
     IDEs: [
       'Android Studio',
